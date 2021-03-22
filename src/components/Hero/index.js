@@ -87,10 +87,10 @@ const Hero = ({ slides }) => {
       >
         {slides.map(({ title, description, image }, i) => (
           <SwiperSlide className="swiper-slide" key={i}>
-            <div className="slide-box">
-              <h2 className="slide-title">{title}</h2>
-              <h3 className="slide-description">{description}</h3>
-            </div>
+            <section className="slide-box">
+              <h3 className="slide-title">{title}</h3>
+              <p className="slide-description">{description}</p>
+            </section>
             <Img
               className="slide-image"
               fluid={image.childImageSharp.fluid}
