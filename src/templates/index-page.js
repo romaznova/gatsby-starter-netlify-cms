@@ -12,9 +12,9 @@ export const IndexPageTemplate = ({ slides }) => {
   // console.log(props);
   return (
     <div>
-      <Hero slides={slides} />
+      {/* <Hero slides={slides} /> */}
       <div className="l-layout">
-        <Carousel slides={slides} />
+        {/* <Carousel slides={slides} /> */}
       </div>
 
       {/* <div
