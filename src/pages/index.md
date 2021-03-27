@@ -12,6 +12,8 @@ slides:
 heading: Great coffee with a conscience
 subheading: Support sustainable farming while enjoying a cup
 templateKey: index-page
+image: /img/home-jumbotron.jpg
+color: "#deb5b5"
 mainpitch:
   title: Why Kaldi
   description: >
@@ -71,7 +73,6 @@ main:
   image3:
     alt: Coffee beans
     image: /img/products-grid1.jpg
-image: /img/home-jumbotron.jpg
 description: Kaldi is the ultimate spot for coffee lovers who want to learn
   about their java’s origin and support the farmers that grew it. We take coffee
   production, roasting and brewing seriously and we’re glad to pass that
