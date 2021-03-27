@@ -2,14 +2,14 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from "styled-components";
 import Img from "gatsby-image";
-// import styles from "./styles.css";
+import SwiperCore, { Autoplay, A11y } from "swiper";
+SwiperCore.use([Autoplay, A11y]);
 
-// Import Swiper styles
-// import "swiper/swiper.scss";
 const HeroComponent = styled.div`
   display: block;
   width: 100%;
   position: relative;
+  background-color: ${({ bgColor }) => bgColor};
 
   &::after {
     display: block;
@@ -18,7 +18,7 @@ const HeroComponent = styled.div`
     padding-bottom: 56.5%;
   }
 
-  .swiper-container {
+  .container {
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -30,79 +30,50 @@ const HeroComponent = styled.div`
     height: 100%;
     width: 100%;
     position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  .swiper-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    transition-property: transform;
-    box-sizing: content-box;
-  }
-  .swiper-slide {
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition-property: transform;
-  }
-  .slide-box {
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+  .box {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
     z-index: 2;
   }
-  .slide-title,
-  .slide-description {
+  .title,
+  .description {
     color: #fff;
     font-size: 24px;
   }
-  .slide-description {
+  .description {
     font-size: 18px;
   }
-  .slide-image {
+  .image {
     position: absolute;
-    width: 100%;
+    width: 50%;
     height: 100%;
   }
 `;
 
-const Hero = ({ slides }) => {
+const Hero = ({ image, title, description, bgColor }) => {
   return (
-    <HeroComponent>
-      <Swiper
-        spaceBetween={0}
-        slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        loop="true"
-      >
-        {slides.map(({ title, description, image }, i) => (
-          <SwiperSlide className="swiper-slide" key={i}>
-            <section className="slide-box">
-              <h3 className="slide-title">{title}</h3>
-              <p className="slide-description">{description}</p>
-            </section>
-            <Img
-              className="slide-image"
-              fluid={image.childImageSharp.fluid}
-              alt={`Image ${title}`}
-            />
-          </SwiperSlide>
-        ))}
-        {/* <SwiperSlide className="swiper-slide">Slide 1</SwiperSlide>
-        <SwiperSlide className="swiper-slide">Slide 2</SwiperSlide>
-        <SwiperSlide className="swiper-slide">Slide 3</SwiperSlide>
-        <SwiperSlide className="swiper-slide">Slide 4</SwiperSlide> */}
-      </Swiper>
+    <HeroComponent bgColor={bgColor}>
+      <div className="container">
+        <section className="box">
+          <h3 className="title">{title}</h3>
+          <p className="description">{description}</p>
+        </section>
+        <Img
+          className="image"
+          fluid={image.childImageSharp.fluid}
+          alt={`Image ${title}`}
+        />
+      </div>
     </HeroComponent>
   );
 };

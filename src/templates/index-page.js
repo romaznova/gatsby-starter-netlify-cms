@@ -6,12 +6,17 @@ import Layout from "../components/Layout";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import Hero from "../components/Hero";
+import Carousel from "../components/Carousel";
 
 export const IndexPageTemplate = ({ slides }) => {
   // console.log(props);
   return (
     <div>
       <Hero slides={slides} />
+      <div className="l-layout">
+        <Carousel slides={slides} />
+      </div>
+
       {/* <div
       className="full-width-image margin-top-0"
       style={{

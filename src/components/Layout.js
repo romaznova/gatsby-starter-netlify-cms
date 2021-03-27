@@ -5,11 +5,40 @@ import Navbar from "../components/Navbar";
 // import './all.sass'
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Lexend';
+    src: url('../fonts/Lexend-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+    font-family: 'Lexend', sans-serif;
+  }
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  .l-layout {
+    width: 100%;
+    max-width: 128rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+`;
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div>
+      <GlobalStyle />
       <Helmet>
         <html lang="en" />
         <title>{title}</title>

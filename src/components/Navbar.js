@@ -2,6 +2,34 @@ import React from "react";
 import { Link } from "gatsby";
 import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
+import styled from "styled-components";
+
+const NavbarComponent = styled.nav`
+  .c-nav-container {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    padding: 2rem 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    &__list {
+      flex: 1;
+      text-align: center;
+    }
+
+    &__item {
+      text-decoration: none;
+      font-size: 1.8rem;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      color: #fff;
+      letter-spacing: 0.05rem;
+    }
+  }
+`;
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -12,85 +40,32 @@ const Navbar = class extends React.Component {
     };
   }
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: "is-active",
-            })
-          : this.setState({
-              navBarActiveClass: "",
-            });
-      }
-    );
-  };
-
   render() {
     return (
-      <nav
-        className="navbar is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
+      <NavbarComponent>
+        <div className="c-nav-container">
+          <Link to="/" className="c-nav-container__logo" title="Logo">
+            <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
+          </Link>
+          <div className="c-nav-container__list">
+            <Link className="c-nav-container__item" to="/about">
+              About
             </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            {/* <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div> */}
+            <Link className="c-nav-container__item" to="/products">
+              Products
+            </Link>
+            <Link className="c-nav-container__item" to="/blog">
+              Blog
+            </Link>
+            <Link className="c-nav-container__item" to="/contact">
+              Contact
+            </Link>
+            <Link className="c-nav-container__item" to="/contact/examples">
+              Form Examples
+            </Link>
           </div>
         </div>
-      </nav>
+      </NavbarComponent>
     );
   }
 };
