@@ -12,7 +12,7 @@ slides:
 heading: Great coffee with a conscience
 subheading: Support sustainable farming while enjoying a cup
 templateKey: index-page
-image: /img/home-jumbotron.jpg
+image: /img/unisex-heavy-blend-hoodie-white-front-606817320b5e7.png
 color: "#deb5b5"
 mainpitch:
   title: Why Kaldi
