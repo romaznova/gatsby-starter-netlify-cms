@@ -56,7 +56,8 @@ intro:
     java’s origin and support the farmers that grew it. We take coffee
     production, roasting and brewing seriously and we’re glad to pass that
     knowledge to anyone. This is an edit via identity...
-title: Great coffee with a conscience
+title: One morning, when Gregor Samsa woke from troubled dreams, he found
+  himself transformed in his bed into a horrible vermin.
 main:
   heading: Great coffee with no compromises
   description: >
