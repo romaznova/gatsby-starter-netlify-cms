@@ -1,21 +1,46 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql, StaticQuery } from "gatsby";
+import styled from "styled-components";
+import PreviewCompatibleImage from "./PreviewCompatibleImage";
+import Layout from "./Layout";
+import { Button } from "../containers";
+
+const BlogRollComponent = styled.div`
+  ${Button}, .button {
+    color: #333;
+    border-color: #333;
+    text-decoration: none;
+  }
+
+  header p {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  article {
+    padding: 20px 0;
+    margin: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+`;
 
 class BlogRoll extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
 
     return (
-      <div className="columns is-multiline">
+      <BlogRollComponent className="l-layout">
         {posts &&
           posts.map(({ node: post }) => (
-            <div className="is-parent column is-6" key={post.id}>
+            <div>
               <article
-                className={`blog-list-item tile is-child box notification ${
-                  post.frontmatter.featuredpost ? 'is-featured' : ''
+                className={`article ${
+                  post.frontmatter.featuredpost ? "is-featured" : ""
                 }`}
               >
                 <header>
@@ -29,32 +54,29 @@ class BlogRoll extends React.Component {
                       />
                     </div>
                   ) : null}
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={post.fields.slug}
-                    >
+                  <p>
+                    <Link className="button" to={post.fields.slug}>
                       {post.frontmatter.title}
                     </Link>
                     <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
-                    </span>
+                    <span>{post.frontmatter.date}</span>
                   </p>
                 </header>
                 <p>
                   {post.excerpt}
                   <br />
                   <br />
-                  <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
+                  <Button>
+                    <Link className="button" to={post.fields.slug}>
+                      Keep Reading
+                    </Link>
+                  </Button>
                 </p>
               </article>
             </div>
           ))}
-      </div>
-    )
+      </BlogRollComponent>
+    );
   }
 }
 
@@ -64,7 +86,7 @@ BlogRoll.propTypes = {
       edges: PropTypes.array,
     }),
   }),
-}
+};
 
 export default () => (
   <StaticQuery
@@ -88,7 +110,7 @@ export default () => (
                 featuredpost
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
+                    fluid(quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -101,4 +123,4 @@ export default () => (
     `}
     render={(data, count) => <BlogRoll data={data} count={count} />}
   />
-)
+);

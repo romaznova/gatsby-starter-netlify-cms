@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 import { createGlobalStyle } from "styled-components";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -20,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-size: 10px;
     font-family: 'Lexend', sans-serif;
+    color: #333;
+    background-color: #f1f1f1;
   }
 
   & * {
@@ -77,9 +80,11 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
-      <div>{children}</div>
-      <Footer />
+      <ParallaxProvider>
+        <Navbar />
+        <div>{children}</div>
+        <Footer />
+      </ParallaxProvider>
     </div>
   );
 };

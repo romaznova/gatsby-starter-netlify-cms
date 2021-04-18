@@ -7,13 +7,45 @@ import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import Hero from "../components/Hero";
 import Carousel from "../components/Carousel";
+import Gallery from "../components/Gallery";
 
 export const IndexPageTemplate = (props) => {
   // console.log(props);
+  const imagesGrid = {
+    left: {
+      image: props.image,
+      url: "/",
+    },
+    bottom: {
+      image: props.image,
+      url: "/",
+    },
+    center: {
+      image: props.image,
+      url: "/",
+    },
+    right: {
+      image: props.image,
+      url: "/",
+    },
+  };
+
+  const slides = [...Array(12)].map(() => ({
+    title: "title",
+    description: "description",
+    image: props.image,
+  }));
+
+  console.log({ slides: props.slides });
   return (
     <div>
       <Hero {...props} />
-      <div className="l-layout">{/* <Carousel slides={slides} /> */}</div>
+
+      <div className="l-layout">
+        <Gallery imagesGrid={imagesGrid}></Gallery>
+        <Carousel slides={props.slides} />
+        <Carousel slides={slides} title="Hot Items" />
+      </div>
     </div>
   );
 };

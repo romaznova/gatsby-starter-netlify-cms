@@ -1,10 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, A11y, EffectFade, Pagination } from "swiper";
-
 import styled from "styled-components";
-import Img from "gatsby-image";
-import ProductCard from "../ProductCard";
 SwiperCore.use([Pagination]);
 
 const CarouselComponent = styled.div`
@@ -93,7 +90,15 @@ const CarouselComponent = styled.div`
   }
 `;
 
-const Carousel = ({ slides = [], title = "Featured products" }) => {
+export function Map(props) {
+  return <React.Fragment>{props.items.map(props.children)}</React.Fragment>;
+}
+
+export const Carousel = ({
+  slides = [],
+  title = "Featured products",
+  children,
+}) => {
   return (
     <CarouselComponent>
       <h4 className="carousel-title">{title}</h4>
@@ -128,9 +133,9 @@ const Carousel = ({ slides = [], title = "Featured products" }) => {
           },
         }}
       >
-        {slides.map(({ title, description, image }, i) => (
+        {slides.map((slide, i) => (
           <SwiperSlide className="swiper-slide" key={i}>
-            <ProductCard title={title} image={image} />
+            {/* {children.bind(slide)} */}
           </SwiperSlide>
         ))}
         <div className="swiper-pagination" />
@@ -138,5 +143,3 @@ const Carousel = ({ slides = [], title = "Featured products" }) => {
     </CarouselComponent>
   );
 };
-
-export default Carousel;
