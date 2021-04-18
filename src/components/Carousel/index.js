@@ -69,7 +69,7 @@ const CarouselComponent = styled.div`
   }
 `;
 
-const Carousel = ({ slides, title = "Featured products" }) => {
+const Carousel = ({ slides = [], title = "Featured products" }) => {
   return (
     <CarouselComponent>
       <h4 className="carousel-title">{title}</h4>

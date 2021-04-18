@@ -5,6 +5,9 @@ import logo from "../img/logo.svg";
 import styled from "styled-components";
 
 const NavbarComponent = styled.nav`
+  .c-nav-placeholder {
+    height: 62px;
+  }
   .c-nav-container {
     display: flex;
     position: fixed;
@@ -13,7 +16,8 @@ const NavbarComponent = styled.nav`
     top: 0;
     z-index: 10;
     padding: 2rem 1rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #f7f7f7;
+    border-bottom: 2px solid #333;
 
     &__list {
       flex: 1;
@@ -25,7 +29,7 @@ const NavbarComponent = styled.nav`
       font-size: 1.8rem;
       margin: 0.5rem;
       padding: 0.5rem;
-      color: #fff;
+      color: #333;
       letter-spacing: 0.05rem;
     }
   }
@@ -65,6 +69,7 @@ const Navbar = class extends React.Component {
             </Link>
           </div>
         </div>
+        <div className="c-nav-placeholder" />
       </NavbarComponent>
     );
   }
