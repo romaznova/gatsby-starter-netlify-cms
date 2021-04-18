@@ -12,19 +12,24 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "products"
-    label: "Products"
+  - name: "product"
+    label: "Product"
     folder: "src/pages/product"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Price", name: "price", widget: "string"}
       - {label: "Discount Price", name: "discountPrice", widget: "string"}
       - {label: "Featured Product", name: "isFeatured", widget: "boolean"}
-      - {label: Slides, name: slides, widget: list, fields: [{label: Image, name: image, widget: image}]}
+      - {label: "Hot item", name: "isHot", widget: "boolean"}
+      - {label: "Gender", name: "gender", widget: "select", options: ["man", "woman", "both"] }
+      - {label: "Category", name: "category", widget: "select", options: ["hoodies", "shoes", "pants", "shirts", "hats", "accesoires"] }
+      - {label: "Type", name: "categorytype", widget: "select", options: ["national", "freedom", "pets", "nature", "abstract", "white-black"] }
+      - {label: "Images", name: slides, widget: list, fields: [{label: Image, name: image, widget: image}]}
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "blog"
