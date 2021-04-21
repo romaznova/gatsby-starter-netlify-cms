@@ -27,9 +27,9 @@ collections:
       - {label: "Featured Product", name: "isFeatured", widget: "boolean"}
       - {label: "Hot item", name: "isHot", widget: "boolean"}
       - {label: "Gender", name: "gender", widget: "select", options: ["man", "woman", "both"] }
-      - {label: "Category", name: "category", widget: "select", options: ["hoodies", "shoes", "pants", "shirts", "hats", "accesoires"] }
-      - {label: "Type", name: "categorytype", widget: "select", options: ["national", "freedom", "pets", "nature", "abstract", "white-black"] }
-      - {label: "Images", name: slides, widget: list, fields: [{label: Image, name: image, widget: image}]}
+      - {label: "Category", name: "category", widget: "select", options: ["hoodies", "shoes", "pants", "shirts", "hats", "accesoires"], default: ["hoodies"] }
+      - {label: "Category Type", name: "categorytype", widget: "select", options: ["national", "freedom", "pets", "nature", "abstract", "white-black", "other"], default: ["other"] }
+      - {label: "Images", name: "slides", widget: "list", fields: [{label: Image, name: image, widget: image}]}
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "blog"
