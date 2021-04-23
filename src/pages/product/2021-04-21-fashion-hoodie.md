@@ -14,6 +14,6 @@ isHot: false
 category: hoodies
 categorytype: abstract
 images:
-  - image: /img/unisex-heavy-blend-hoodie-white-front-606817320b5e7.png
-  - image: /img/unisex-heavy-blend-hoodie-white-front-605f04eca8b8b.png
+  - image: /img/unisex-heavy-blend-hoodie-white-front-605f04eca8582.png
+  - image: /img/unisex-heavy-blend-hoodie-white-front-605f04eca89bd.png
 ---
